@@ -128,8 +128,8 @@ export function destroy(req, res) {
             res.json(err);
         })
     }
-    export function synonyms(req, res) {
-        var sys = await dict.synonyms(req.body.word);
+    export function synonym(req, res) {
+        var sys =  dict.synonyms(req.body.word);
         sys.then(function(value){
             res.json(value)
         },function(err){
@@ -137,9 +137,18 @@ export function destroy(req, res) {
         })
     }
 
-    export function antonyms(req, res) {
-        var ant = await dict.antonyms(req.body.word);
+    export function antonym(req, res) {
+        var ant =  dict.antonyms(req.body.word);
         ant.then(function(value){
+            res.json(value)
+        },function(err){
+            res.json(err);
+        })
+    }
+
+    export function example(req, res) {
+        var example =  dict.examples(req.body.word);
+        example.then(function(value){
             res.json(value)
         },function(err){
             res.json(err);

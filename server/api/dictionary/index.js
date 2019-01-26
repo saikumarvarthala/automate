@@ -10,9 +10,10 @@ router.put('/:id', controller.upsert);
 router.patch('/:id', controller.patch);
 router.delete('/:id', controller.destroy);
 
+//apis for automate.io
 router.post('/definition',controller.definition);
-router.post('/synonyms',controller.synonyms);
-router.post('/antonyms',controller.antonyms);
-
+router.post('/synonym',controller.synonym);
+router.post('/antonym',controller.antonym);
+router.post('/example',controller.example);
 
 module.exports = router;
