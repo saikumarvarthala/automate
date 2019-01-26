@@ -11,5 +11,8 @@ router.patch('/:id', controller.patch);
 router.delete('/:id', controller.destroy);
 
 router.post('/definition',controller.definition);
+router.post('/synonyms',controller.synonyms);
+router.post('/antonyms',controller.antonyms);
+
 
 module.exports = router;

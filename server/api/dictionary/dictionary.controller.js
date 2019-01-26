@@ -120,9 +120,26 @@ export function destroy(req, res) {
         .catch(handleError(res));
 }
 
-export function definition(req, res) {
+    export function definition(req, res) {
         var dic= dict.definitions(req.body.word);
         dic.then(function(value){
+            res.json(value)
+        },function(err){
+            res.json(err);
+        })
+    }
+    export function synonyms(req, reply) {
+        var sys = await dict.synonyms(req.body.word);
+        sys.then(function(value){
+            res.json(value)
+        },function(err){
+            res.json(err);
+        })
+    }
+    
+    export function antonyms(req, reply) {
+        var ant = await dict.antonyms(req.payload.word);
+        ant.then(function(value){
             res.json(value)
         },function(err){
             res.json(err);
