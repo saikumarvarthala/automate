@@ -128,7 +128,7 @@ export function destroy(req, res) {
             res.json(err);
         })
     }
-    export function synonyms(req, reply) {
+    export function synonyms(req, res) {
         var sys = await dict.synonyms(req.body.word);
         sys.then(function(value){
             res.json(value)
@@ -136,9 +136,9 @@ export function destroy(req, res) {
             res.json(err);
         })
     }
-    
-    export function antonyms(req, reply) {
-        var ant = await dict.antonyms(req.payload.word);
+
+    export function antonyms(req, res) {
+        var ant = await dict.antonyms(req.body.word);
         ant.then(function(value){
             res.json(value)
         },function(err){
