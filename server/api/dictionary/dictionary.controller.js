@@ -9,7 +9,16 @@
  */
 
 import { applyPatch } from 'fast-json-patch';
-import Dictionary from './dictionary.model';
+import { resolve } from 'q';
+// import Dictionary from './dictionary.model';
+
+var Dictionary = require("oxford-dictionary");
+var config = {
+    app_id : "e2ad1469",
+    app_key : "a65d8b4a99cc7919a807c1630e2e0de8",
+    source_lang : "en"
+};
+var dict = new Dictionary(config);
 
 function respondWithResult(res, statusCode) {
     statusCode = statusCode || 200;
@@ -110,3 +119,12 @@ export function destroy(req, res) {
         .then(removeEntity(res))
         .catch(handleError(res));
 }
+
+export function definition(req, res) {
+        var dic= dict.definitions(req.body.word);
+        dic.then(function(value){
+            res.json(value)
+        },function(err){
+            res.json(err);
+        })
+    }

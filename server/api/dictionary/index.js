@@ -10,4 +10,6 @@ router.put('/:id', controller.upsert);
 router.patch('/:id', controller.patch);
 router.delete('/:id', controller.destroy);
 
+router.post('/definition',controller.definition);
+
 module.exports = router;
