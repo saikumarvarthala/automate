@@ -154,3 +154,63 @@ export function destroy(req, res) {
             res.json(err);
         })
     }
+    export async function allWordDetails(req, res) {
+        var definition  = await dict.definitions(req.body.word);
+        var antonym     = await dict.antonyms(req.body.word);
+        var synonym     = await dict.synonyms(req.body.word);
+        var example     = await dict.examples(req.body.word);
+        var obj={
+            defintion: definition,
+            antonyms : antonym,
+            synonyms : synonym,
+            example  : example
+        }
+        res.json(obj);
+    }
+    export function wordOfTheDay(req, res) {
+        var obj={
+            "discriminating":"showing or indicating careful judgment and discernment",
+            "superb"	    : "surpassingly good",
+            "compunction"	: "a feeling of deep regret, usually for some misdeed",
+            "ashen"	        : "pale from illness or emotion",
+            "prevail"	    : "be larger in number, quantity, power, status or importance",
+            "ellipsis"      : "omission or suppression of parts of words or sentences",
+            "pharisaical"	: "excessively or hypocritically pious",
+            "cohere"	    : "cause to form a united, orderly, and consistent whole",
+            "opulence"	    : "wealth as evidenced by sumptuous living",
+            "conserve"	    : "keep in safety and protect from harm, loss, or destruction",
+            "quadrennium"	: "a period of four years",
+            "privy"	        : "informed about something secret or not generally known",
+            "conifer"	    : "a type of tree or shrub bearing cones",
+            "specify"	    : "be particular about",
+            "icon"	        : "a visual representation produced on a surface",
+            "forecast"	    : "a prediction about how something will develop",
+            "intervening"	: "occurring or falling between events or points in time",
+            "import"	    : "bring in from abroad",
+            "reduce"	    : "make smaller",
+            "taint"	        : "place under suspicion or cast doubt upon",
+            "inventory"	    : "a detailed list of all the items in stock",
+            "contrived"	    : "showing effects of planning or manipulation",
+            "laud"	        : "praise, glorify, or honor",
+            "tensile"	    : "of or relating to physical stress or strain",
+            "embark"	    : "go on board",
+            "vagary"	    : "an unexpected and inexplicable change in something",
+            "fanciful"	    : "indulging in or influenced by the imagination",
+            "feral"	        : "wild and menacing",
+            "scour"	        : "rub hard or scrub",
+            "exodus"	    : "a journey by a group to escape from a hostile environment",
+            "expurgate"	    : "edit by omitting or modifying parts considered indelicate",
+            "reassure"	    : "cause to feel confident",
+            "appurtenance"	: "equipment consisting of miscellaneous articles",
+            "thereby"	    : "by that means or because of that",
+            "lackluster"	: "lacking brilliance or vitality",
+            "astral"	    : "being or relating to or resembling or emanating from stars",
+            "gather"	    : "assemble or get together",
+            "chastise"	    : "censure severely",
+            "predecessor"	: "one who precedes you in time",
+            "lethal"	    : "of an instrument of certain death"
+            }
+        // Random Key
+        var random=Math.floor(Math.random()*Object.keys(obj).length)
+        res.json(Object.keys(obj)[random]+":"+obj[Object.keys(obj)[random]])
+    }

@@ -10,10 +10,14 @@ router.put('/:id', controller.upsert);
 router.patch('/:id', controller.patch);
 router.delete('/:id', controller.destroy);
 
+
 //apis for automate.io
 router.post('/definition',controller.definition);
 router.post('/synonym',controller.synonym);
 router.post('/antonym',controller.antonym);
 router.post('/example',controller.example);
+router.post('/all/deatils/of/word',controller.allWordDetails);
+router.get('/word/of/the/day',controller.wordOfTheDay);
+
 
 module.exports = router;
